@@ -14,7 +14,6 @@ def logic():
     for event in pygame.event.get():
         if event.type == pygame.MOUSEBUTTONUP and score == 'playing':
             x, y = pygame.mouse.get_pos()
-            print('x', x, 'y', y)
             if x >= r:
                 indx_x = ((x - r) // d)
             else:
@@ -23,9 +22,7 @@ def logic():
                 indx_y = ((y - r) // d) * 3
             else:
                 indx_y = 0
-            print('indx_x', indx_x, 'indx_y',indx_y)
             indx = indx_x + indx_y
-            print(indx)
             if squares[indx] == '':
                 if turn == 1:
                     turn = 2
