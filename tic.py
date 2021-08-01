@@ -1,6 +1,7 @@
 import pygame
 import sys
 import random
+import time
 class Game:
     def __init__(self):
         pygame.init()
@@ -32,25 +33,25 @@ class Game:
                     if y >= 300 and y <= 371:
                         self.score = 'playing'
                         self.mode = 'irl'
-                elif x >= 200 and x <= 406:
+                if x >= 200 and x <= 406:
                     if y >= 100 and y <= 171:
                         self.score = 'playing'
                         self.mode = 'cv'
-                     
 
     def logic_playing(self, events):
         d = 188
         r = 40
         if self.turn == 2 and self.mode == 'cv' and self.score == 'playing':
+            time.sleep(0.5)
             x = 0
             indxs = []
             while x < len(self.squares):
-                if self.sqaures[x] == '':
+                if self.squares[x] == '':
                      indxs.append(x)
                 x += 1
             indx = random.choice(indxs)
             self.squares[indx] = 'o'
-                
+            self.turn = 1
         for event in events:
             if event.type == pygame.MOUSEBUTTONUP and self.score == 'playing':
                 x, y = pygame.mouse.get_pos()
